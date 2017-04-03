@@ -40,5 +40,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.logger = Logger.new('log/development.log', 'daily')
-  config.logger.formatter = ::Logger::Formatter.new
+  config.logger.formatter = proc do |severity, datetime, progname, msg|
+    "[#{severity}]#{datetime}: #{progname} : #{msg}\n"
+  end
 end
