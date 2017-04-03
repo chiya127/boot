@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    logger.info "id -#{params[:id]}- is log on"
   end
 
   # GET /users/new
