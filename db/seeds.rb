@@ -10,8 +10,8 @@
   no += 1
   User.create(
         :name => "name#{no}",
-        :address => no,
-        :email => no,
+        :address => 'tokyo',
+        :email => "#{no}@#{no}",
         :password => no
       )
 end
