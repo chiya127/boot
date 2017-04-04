@@ -1,16 +1,27 @@
 class User < ActiveRecord::Base
-  enum address: { tokyo: 1, kanagawa: 2, saitama: 3, hokkaido: 4, okinawa: 5 }
 
   validates :name,     presence: true
-  #validates :address,  presence: true
+  validates :role,     presence: true
+  validates :address,  presence: true
   validates :email,    presence: true
   validates :password, presence: true
 
   class << self
-    def localed_addresses
-      addresses.keys.map do |s|
-        [ApplicationController.helpers.t("address.user.#{s}"), s]
+    def localed(kind)
+      case kind
+      when 'role'
+        ['general', 'admin']
+      when 'address'
+        ['tokyo', 'kanagawa', 'saitama', 'hokaido', 'okinawa']
       end
     end
+  end
+
+  def admin?
+    @user.role == "admin"
+  end
+
+  def general?
+    @user.role == "general"
   end
 end

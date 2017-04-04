@@ -9,9 +9,10 @@
 5.times do |no|
   no += 1
   User.create(
-        :name => "name#{no}",
-        :address => 'tokyo',
-        :email => "#{no}@#{no}",
-        :password => no
+        name: "name#{no}",
+        role: "general",
+        address: "tokyo",
+        email: "#{no}@#{no}",
+        password: no
       )
 end
